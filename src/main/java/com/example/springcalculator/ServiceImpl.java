@@ -24,4 +24,9 @@ public class ServiceImpl implements Service{
         }
         return name1/name2;
     }
+
+    @Override
+    public String getMessage(){
+        return "You forgot the argument";
+    }
 }

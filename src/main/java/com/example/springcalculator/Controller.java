@@ -1,9 +1,11 @@
 package com.example.springcalculator;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+@RequestMapping("/calculator")
 @RestController
 public class Controller {
 
@@ -13,29 +15,41 @@ public class Controller {
         this.service = service;
     }
 
-    @GetMapping("/calculator")
-    public String welcome(){
+    @GetMapping
+    public String welcome() {
         return "Welcome to calculator";
     }
 
-    @GetMapping("/calculator/plus")
-    public int addition(@RequestParam int num1,@RequestParam int num2){
-        return service.addition(num1,num2);
+    @GetMapping("/plus")
+    public String addition(@RequestParam(required = false) Integer num1, @RequestParam(required = false) Integer num2) {
+        if (num1 == null | num2 == null) {
+            return service.getMessage();
+        }
+        return String.valueOf(service.addition(num1, num2));
     }
 
-    @GetMapping("/calculator/minus")
-    public int subtraction(@RequestParam int num1, @RequestParam int num2){
-        return service.subtraction(num1,num2);
+    @GetMapping("/minus")
+    public String subtraction(@RequestParam(required = false) Integer num1, @RequestParam(required = false) Integer num2) {
+        if (num1 == null | num2 == null) {
+            return service.getMessage();
+        }
+        return String.valueOf(service.subtraction(num1, num2));
     }
 
-    @GetMapping("/calculator/multiply")
-    public int multiplication(@RequestParam int num1,@RequestParam int num2){
-        return service.multiplication(num1,num2);
+    @GetMapping("/multiply")
+    public String multiplication(@RequestParam(required = false) Integer num1, @RequestParam(required = false) Integer num2) {
+        if (num1 == null | num2 == null) {
+            return service.getMessage();
+        }
+        return String.valueOf(service.multiplication(num1, num2));
     }
 
-    @GetMapping("/calculator/divide")
-    public int division(@RequestParam int num1,@RequestParam int num2){
-        return service.division(num1,num2);
+    @GetMapping("/divide")
+    public String division(@RequestParam(required = false) Integer num1, @RequestParam(required = false) Integer num2) {
+        if (num1 == null | num2 == null) {
+            return service.getMessage();
+        }
+        return String.valueOf(service.division(num1, num2));
     }
 
 

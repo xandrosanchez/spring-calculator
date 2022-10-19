@@ -10,4 +10,5 @@ public interface Service {
 
     int division(int name1, int name2);
 
+    String getMessage();
 }
