@@ -18,9 +18,9 @@ public class ServiceImpl implements Service{
     }
 
     @Override
-    public int division(int name1, int name2) {
+    public int division(int name1, int name2) throws IllegalArgumentException {
         if (name2 == 0){
-            return 0;
+            throw new IllegalArgumentException();
         }
         return name1/name2;
     }
